@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   end
   
   def new
-    @products = Product.new
+    @product = Product.new
   end
   
   def create
@@ -12,15 +12,17 @@ class ProductsController < ApplicationController
     price: params[:product][:price])
     
     if @product.save
+      flash[:success] = "商品を登録しました"
       redirect_to root_path
     else
-      resources 'new'
+      render 'new'
     end
   end
   
   def destroy
     product = Product.find(params[:id])
     product.destroy
+    flash[:success] ="商品を削除しました"
     redirect_to root_path
   end
 end

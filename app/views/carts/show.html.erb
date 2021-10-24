@@ -1,2 +1,14 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<% @cart_item.each do |e| %>
+        <%= @product.find_by(id: e.product_id).name %>
+        <%= @product.find_by(id: e.product_id).price %>円
+        <%= e.qty %>個
+        <%= link_to 'カートから削除する',cart_item_path(e),method: :delete %>
+        <br>
+        <% unless e.qty == nil  %>
+                <% @sum = @sum + (@product.find_by(id: e.product_id).price * e.qty) %>
+        <%end%>
+<%end%>
+<p><%= "合計金額：#{@sum}円" %></p>
+<p><%= link_to '商品一覧ページ',root_path %></p>
+    
+    

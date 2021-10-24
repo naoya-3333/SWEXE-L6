@@ -2,6 +2,7 @@
     <%= e.name %>
     <%= e.price %>円
     <%= link_to '削除', "products/#{e.id}",method: :delete %>
+    <%= link_to 'カートに入れる',new_cart_item_path(product_id: e.id),method: :get %>
     <br>
 <% end %>
 

@@ -1,2 +1,11 @@
-<h1>CartItems#new</h1>
-<p>Find me in app/views/cart_items/new.html.erb</p>
+<%= form_for @cartitem, url: {action: :create} do |f| %>
+        
+    <%= "商品名：" %>
+        <%= @product.id %><br>
+    <%= "価格：" %>
+        <%= @product.price %><br>
+        <%= f.hidden_field :product_id, :value => @product.id %>
+    <%= "数量：" %>
+        <%= f.text_field :qty %>
+    <%= f.submit'カートに追加' %>
+<%end %>
